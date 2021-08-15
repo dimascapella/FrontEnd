@@ -1,0 +1,181 @@
+/* base css */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* re-useable css */
+.margin_top_50 {
+    margin-top: 50px;
+}
+
+.margin_top_60 {
+    margin-top: 60px;
+}
+
+.margin_top_75 {
+    margin-top: 75px;
+}
+
+.margin_top_100 {
+    margin-top: 100px;
+}
+
+/* navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background-color: lemonchiffon;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    transition: 0.3s ease-in;
+}
+
+nav .logo {
+    letter-spacing: 3px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: blue;
+}
+
+nav ul li a .fa {
+    display: none;
+}
+
+/* burger icon */
+.menu_toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    position: relative;
+}
+
+.menu_toggle input {
+    position: absolute;
+    width: 50px;
+    height: 35px;
+    left: -10px;
+    top: -7px;
+    opacity: 0; 
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu_toggle span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background-color: red;
+    border-radius: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+/* Burger Icon Animation */
+.menu_toggle span:nth-child(2) {
+    transform-origin: 0 50%;
+}
+
+.menu_toggle span:nth-child(3) {
+    transform-origin: 50% 100%;
+}
+
+.menu_toggle span:nth-child(4) {
+    width: 19px;
+}
+
+.menu_toggle input:checked ~ span:nth-child(2) {
+    transform: rotate(45deg) translate(1px, -1.5px);
+}
+
+.menu_toggle input:checked ~ span:nth-child(3) {
+    transform: rotate(-45deg) translate(-1px, 0px);
+}
+
+.menu_toggle input:checked ~ span:nth-child(4) {
+    transform: scale(0);
+}
+
+/* Responsive Breakdown */
+/* tablet */
+@media screen and (max-width: 768px) {
+    nav ul {
+        width: 50%;
+    }
+}
+
+/* mobile */
+@media screen and (max-width: 576px) {
+    nav ul {
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 100%;
+        height: 100vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(240, 246, 247, .6);
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    nav ul li {
+        opacity: 0;
+    }
+
+    nav ul li a .fa {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .menu_toggle {
+        display: flex;
+    }
+
+    nav ul.slide {
+        transform: translateX(0%);
+    }
+}
+
+/* keyframe animation */
+@keyframes navLinkFade {
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* onScroll navbar animation */
+.scroll_active {
+    background-color: blue;
+}
